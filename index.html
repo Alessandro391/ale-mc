@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MC Ale Officina, Ciampino</title>
+<meta name="description" content="Officina a Ciampino, Viale Kennedy 103. Prezzi stimati, diagnosi dei sintomi, prezzi medi dei ricambi, prenotazione in 3 passi.">
+<meta name="theme-color" content="#030406">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- Anteprima su WhatsApp: crea og-image.png (1200×630) nella stessa cartella -->
+<meta property="og:title" content="MC Ale Officina, Ciampino">
+<meta property="og:description" content="Prezzi, diagnosi, ricambi. Prenota in 3 passi.">
+<meta property="og:image" content="og-image.png">
+<link rel="apple-touch-icon" href="icona-180.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232E5BFF'/%3E%3Cpath d='M38 18a10 10 0 0 0-12 13L15 42a4 4 0 0 0 6 6l11-11a10 10 0 0 0 13-12l-6 6-6-1-1-6z' fill='%23ffffff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#030406; --ink:#F3F5F8; --ink2:#9BA3AE; --g:rgba(255,255,255,.055); --g2:rgba(255,255,255,.1); --gb:rgba(255,255,255,.12);
+  --line:rgba(255,255,255,.09); --sh:0 14px 40px rgba(0,0,0,.55); --ombra-tab:0 18px 50px rgba(0,0,0,.75);
+  --blu:#2E5BFF; --blu2:#6E8DFF; --blu3:#1733C9; --blu-soft:rgba(46,91,255,.18); --glow:0 10px 32px rgba(46,91,255,.5);
+  --grafite:#14171D; --verde:#22A55A; --rosso:#F04438; --arancio:#F5A524;
+  --f:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --tab-h:76px; color-scheme:dark;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 19px/1.4 var(--f);min-height:100vh;overflow-x:hidden}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blu2);outline-offset:3px;border-radius:12px}
+[hidden]{display:none!important}
+
+/* sfondo: nero con luce blu e una griglia leggera */
+.sfondo{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px}
+.sfondo i{position:absolute;border-radius:50%;filter:blur(80px)}
+.sfondo i:nth-child(1){width:70vmax;height:70vmax;left:-30vmax;top:-35vmax;background:radial-gradient(circle,rgba(46,91,255,.55),transparent 65%)}
+.sfondo i:nth-child(2){width:55vmax;height:55vmax;right:-30vmax;top:30vh;background:radial-gradient(circle,rgba(23,51,201,.45),transparent 65%)}
+.sfondo i:nth-child(3){width:50vmax;height:50vmax;left:-10vmax;bottom:-35vmax;background:radial-gradient(circle,rgba(155,163,174,.14),transparent 65%)}
+@media (prefers-reduced-motion:no-preference){
+  .sfondo i:nth-child(1){animation:deriva 24s ease-in-out infinite alternate}
+  .sfondo i:nth-child(2){animation:deriva 28s ease-in-out infinite alternate-reverse}
+}
+@keyframes deriva{to{transform:translate(6vmax,4vmax) scale(1.08)}}
+
+.vetro{background:var(--g);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--gb);box-shadow:var(--sh);border-radius:26px}
+.pagina{max-width:560px;margin:0 auto;padding:0 16px calc(var(--tab-h) + 40px + env(safe-area-inset-bottom))}
+
+/* testata */
+.testa{position:sticky;top:0;z-index:20;padding:calc(10px + env(safe-area-inset-top)) 16px 10px}
+.testa .riga{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 10px;border-radius:22px;background:rgba(10,12,16,.72)}
+.logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(145deg,var(--blu),var(--blu3));display:grid;place-items:center;flex:none;box-shadow:var(--glow)}
+.marchio{flex:1;min-width:0;line-height:1.15}
+.marchio b{display:block;font-size:19px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marchio span{display:flex;align-items:center;gap:6px;font-size:15px;color:var(--ink2)}
+.punto{width:9px;height:9px;border-radius:50%;background:#5B6470;flex:none}
+.punto.on{background:var(--blu2);box-shadow:0 0 0 4px var(--blu-soft),0 0 12px var(--blu)}
+.chiama{display:flex;align-items:center;gap:8px;background:var(--blu-soft);border:1px solid rgba(110,141,255,.5);color:#fff;font-weight:700;font-size:17px;padding:0 16px;height:48px;border-radius:999px;text-decoration:none;flex:none}
+.chiama svg{color:var(--blu2)}
+
+/* intestazione di sezione: sempre chiaro dove sei */
+.sez-testa{display:flex;align-items:center;gap:12px;margin:14px 2px 4px}
+.sez-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:none;color:var(--blu2);background:var(--grafite);border:1px solid var(--gb)}
+.sez-ico.forte{background:linear-gradient(145deg,var(--blu),var(--blu3));color:#fff;border:0;box-shadow:var(--glow)}
+.sez-testa h1{margin:0;font-size:36px;line-height:1.05;font-weight:800;letter-spacing:-.025em}
+.sez-sotto{margin:0 2px 14px;color:var(--ink2);font-size:17px}
+
+/* passi */
+.passi{display:flex;gap:6px;margin:0 0 14px;padding:6px;border-radius:20px}
+.passo{flex:1;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:6px;min-height:46px;border-radius:15px;font-weight:700;font-size:15px;color:var(--ink2)}
+.passo i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;border:2px solid currentColor;flex:none}
+.passo.ora{background:var(--blu);color:#fff;box-shadow:var(--glow)}
+.passo.fatto{color:var(--blu2)}
+.passo.fatto i{background:var(--blu-soft);border-color:var(--blu2)}
+.istruzione{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;margin:18px 4px 10px}
+.istruzione svg{color:var(--blu2);flex:none}
+.scelte-fatte{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 4px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;font-weight:700;font-size:16px;min-height:44px}
+.chip svg{color:var(--blu2)}
+
+/* griglie e tasti */
+.griglia{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:10px;text-align:left;padding:16px;min-height:118px;border-radius:24px}
+.tile .em{font-size:30px;line-height:1}
+.tile .ic{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;color:var(--blu2);background:var(--grafite);border:1px solid var(--gb)}
+.tile b{font-size:19px;line-height:1.15;letter-spacing:-.01em}
+.tile small{display:block;color:var(--ink2);font-size:15px;font-weight:600;margin-top:2px}
+.tile .pz-t{color:var(--blu2);font-weight:800;font-size:15px}
+.premi{transition:transform .12s ease,border-color .2s}
+.premi:active{transform:scale(.97)}
+@media (hover:hover){.vetro.premi:hover{border-color:rgba(110,141,255,.45)}}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;border-radius:20px;font-weight:800;font-size:20px;letter-spacing:-.01em;text-decoration:none;text-align:center;padding:0 18px}
+.btn .due-righe{display:block;line-height:1.15}
+.btn .due-righe small{display:block;font-size:15px;font-weight:700;opacity:.85;margin-top:2px}
+.btn.prim{background:linear-gradient(180deg,#3F6BFF,var(--blu3));color:#fff;box-shadow:var(--glow)}
+.btn.rosso{background:var(--rosso);color:#fff}
+.btn.vetro{color:var(--ink)}
+.btn[disabled]{opacity:.6}
+.pila{display:grid;gap:10px;margin-top:14px}
+.link-tasto{display:inline-flex;align-items:center;gap:6px;color:var(--blu2);font-weight:700;font-size:17px;min-height:44px}
+
+/* home */
+.cta{display:flex;align-items:center;gap:16px;width:100%;text-align:left;padding:20px;border-radius:28px;background:linear-gradient(135deg,#3F6BFF,var(--blu3) 70%);color:#fff;box-shadow:0 20px 50px rgba(46,91,255,.45);margin:4px 0 14px;border:1px solid rgba(255,255,255,.18)}
+.cta .ci{width:60px;height:60px;border-radius:18px;background:rgba(255,255,255,.16);display:grid;place-items:center;flex:none}
+.cta b{display:block;font-size:26px;line-height:1.05;letter-spacing:-.02em}
+.cta span{display:block;font-size:16px;font-weight:700;opacity:.85;margin-top:4px}
+.cta .fr{margin-left:auto}
+.blocco{padding:16px;margin-top:14px}
+.blocco h2{margin:0 0 10px;font-size:22px;letter-spacing:-.015em}
+.orario{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:18px}
+.orario:first-of-type{border-top:0}
+.orario .dx{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.orario .dx small{display:block;color:var(--ink2);font-size:15px;font-weight:600}
+.orario.oggi{color:var(--blu2)}
+.orario .tag{display:inline-block;background:var(--blu-soft);border-radius:8px;padding:1px 8px;font-size:14px;margin-left:6px;font-weight:700}
+.promesse{display:flex;flex-wrap:wrap;gap:8px}
+.promessa{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;font-weight:700;font-size:16px}
+.promessa svg{color:var(--blu2)}
+
+/* mappa (scura, stile tech) */
+.mappa{overflow:hidden;padding:0;margin-top:14px}
+.mappa-img{position:relative;display:block;height:210px;overflow:hidden;background:#0d1016}
+.mappa-img iframe{position:absolute;inset:-40px;width:calc(100% + 80px);height:calc(100% + 80px);border:0;pointer-events:none;filter:invert(.92) hue-rotate(190deg) saturate(.7) brightness(.85) contrast(1.1)}
+.mappa-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(3,4,6,.7))}
+.pin{position:absolute;left:50%;top:50%;width:0;height:0;z-index:1}
+.pin::before{content:"";position:absolute;left:-28px;top:-28px;width:56px;height:56px;border-radius:50%;background:rgba(46,91,255,.45)}
+.pin span{position:absolute;left:-19px;top:-46px;width:38px;height:38px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--blu);border:3px solid #fff;box-shadow:0 0 22px rgba(46,91,255,.9)}
+.pin span::after{content:"";position:absolute;left:10px;top:10px;width:12px;height:12px;border-radius:50%;background:#fff}
+@media (prefers-reduced-motion:no-preference){.pin::before{animation:onda 1.8s ease-out infinite}}
+@keyframes onda{from{transform:scale(.4);opacity:1}to{transform:scale(1.7);opacity:0}}
+.mappa-off{display:grid;place-items:center;align-content:center;gap:8px;background:linear-gradient(160deg,#141922,#0b0e14)}
+.mappa-off::after{display:none}
+.mappa-off .btn{width:auto;min-height:52px}.mappa-off small{color:#9BA3AE;font-size:14px}
+.privacy h2{font-size:21px;margin:22px 0 6px;letter-spacing:-.01em}.privacy p,.privacy li{font-size:17px;line-height:1.5;max-width:68ch}
+.privacy ul{padding-left:22px;margin:6px 0}.privacy li{margin:4px 0}.privacy .agg{color:var(--ink2);font-size:14px}
+footer a{color:inherit;font-weight:700}
+.paga{padding:16px;margin-top:14px}.paga p{margin:4px 0 12px;color:var(--ink2);font-size:16px}
+.mappa-info{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.mappa-info div{flex:1;min-width:0}
+.mappa-info b{display:block;font-size:19px}
+.mappa-info span{display:block;color:var(--ink2);font-size:15px}
+.mappa-info .btn{width:auto;min-height:52px;font-size:17px;border-radius:16px;flex:none}
+.osm{display:block;font-size:12px;color:var(--ink2);padding:0 16px 10px}
+
+/* prezzo stimato */
+.risultato{padding:20px;margin-top:6px;text-align:center}
+.risultato .lab{font-size:15px;font-weight:700;color:var(--ink2)}
+.risultato .cifra{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:6px 0;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff,#AFC1FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.risultato .note{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0 4px}
+.etichetta{display:inline-flex;align-items:center;gap:6px;background:var(--blu-soft);color:#C9D5FF;border-radius:999px;padding:6px 12px;font-weight:700;font-size:15px}
+.piccolo{font-size:15px;color:var(--ink2)}
+.riga-r.auto-tile svg{color:var(--ink)}
+
+/* diagnosi: il semaforo resta rosso, arancio e verde perché è un segnale di sicurezza */
+.semaforo{padding:20px;margin-top:6px}
+.sem-testa{display:flex;align-items:center;gap:14px}
+.luce{width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff}
+.luce.r{background:radial-gradient(circle at 35% 30%,#FF8A80,#D92D20);box-shadow:0 0 0 8px rgba(240,68,56,.16),0 0 28px rgba(240,68,56,.5)}
+.luce.a{background:radial-gradient(circle at 35% 30%,#FFD27A,#DC8A00);box-shadow:0 0 0 8px rgba(245,165,36,.16),0 0 28px rgba(245,165,36,.45)}
+.luce.v{background:radial-gradient(circle at 35% 30%,#86EFAC,#16A34A);box-shadow:0 0 0 8px rgba(34,165,90,.16),0 0 28px rgba(34,165,90,.45)}
+.sem-testa b{display:block;font-size:28px;line-height:1.05;letter-spacing:-.02em}
+.sem-testa span{color:var(--ink2);font-weight:700;font-size:16px}
+.azioni-sub{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}
+.azioni-sub li{display:flex;gap:12px;align-items:flex-start;background:var(--g2);border-radius:16px;padding:12px 14px;font-weight:600;font-size:18px}
+.azioni-sub li i{width:28px;height:28px;border-radius:50%;background:var(--blu);color:#fff;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:800;flex:none}
+.cause{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.cause span{background:var(--g2);border-radius:10px;padding:6px 10px;font-weight:700;font-size:15px}
+.titoletto{font-size:15px;font-weight:800;color:var(--ink2);margin:18px 2px 0}
+.spia-ic{width:52px;height:52px;border-radius:14px;background:#000;border:1px solid var(--gb);display:grid;place-items:center}
+.swatch{width:46px;height:46px;border-radius:50%;border:3px solid rgba(255,255,255,.85);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+
+/* ricambi */
+.avviso-r{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:20px;background:var(--g);border:1px solid var(--gb);border-left:4px solid var(--blu);font-size:16px;margin-bottom:12px}
+.avviso-r b{display:block;font-size:17px}
+.avviso-r svg{color:var(--blu2);flex:none;margin-top:2px}
+.cerca{display:flex;align-items:center;gap:10px;padding:0 16px;min-height:58px;border-radius:18px;margin-bottom:10px}
+.cerca input{flex:1;border:0;background:none;outline:none;font-size:19px;min-width:0;padding:14px 0}
+.cerca svg{color:var(--ink2)}
+.filtri{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;scrollbar-width:none}
+.filtri::-webkit-scrollbar{display:none}
+.filtro{flex:none;padding:10px 16px;border-radius:999px;font-weight:700;font-size:16px;min-height:46px}
+.filtro[aria-pressed="true"]{background:var(--blu);border-color:var(--blu);color:#fff}
+.righe{display:grid;gap:8px}
+.riga-r{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;border-radius:20px;min-height:72px}
+.riga-r .em{font-size:26px;width:44px;height:44px;border-radius:13px;background:var(--grafite);display:grid;place-items:center;flex:none}
+.riga-r b{display:block;font-size:18px;line-height:1.2}
+.riga-r small{display:block;color:var(--ink2);font-size:14px}
+.riga-r .pz{margin-left:auto;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums;padding-left:6px;color:#C9D5FF}
+
+/* prenota */
+.giorni{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.giorni::-webkit-scrollbar{display:none}
+.gio{flex:none;scroll-snap-align:start;min-width:78px;padding:10px 6px;border-radius:20px;text-align:center}
+.gio b{display:block;font-size:15px;color:var(--ink2);font-weight:700}
+.gio strong{display:block;font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.gio span{display:block;font-size:14px;color:var(--ink2);font-weight:600}
+.gio[aria-pressed="true"],.ora[aria-pressed="true"]{background:var(--blu);border-color:var(--blu);color:#fff;box-shadow:var(--glow)}
+.gio[aria-pressed="true"] b,.gio[aria-pressed="true"] span{color:#E3E9FF}
+.fascia{font-size:15px;font-weight:800;color:var(--ink2);margin:12px 4px 6px}
+.ore{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ora{min-height:54px;border-radius:16px;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.srv-lista{display:grid;gap:8px}
+.srv{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:12px 14px;border-radius:20px;min-height:66px}
+.srv .em{font-size:26px;width:44px;text-align:center;flex:none}
+.srv b{display:block;font-size:18px}
+.srv small{display:block;color:var(--ink2);font-size:14px}
+.srv .pz{margin-left:auto;font-weight:800;font-size:16px;white-space:nowrap;text-align:right;padding-left:6px;color:#C9D5FF}
+.srv[aria-pressed="true"],.tile[aria-pressed="true"]{border-color:var(--blu);box-shadow:0 0 0 2px var(--blu),var(--glow);background:rgba(46,91,255,.12)}
+.altri-srv{margin-top:8px}
+#s-lavoro,#s-quando,#s-dati,.campo,#erroreInvio{scroll-margin-top:100px;scroll-margin-bottom:200px}
+.campo{margin:0 0 12px}
+.campo label{display:block;font-weight:700;font-size:16px;margin:0 4px 6px}
+.campo input,.campo textarea{width:100%;border:1px solid var(--gb);background:rgba(255,255,255,.07);border-radius:18px;padding:14px 16px;font-size:20px;min-height:58px;outline:none;color:var(--ink)}
+.campo input::placeholder,.campo textarea::placeholder{color:#6B7380}
+.campo textarea{min-height:84px;resize:vertical}
+.campo input:focus,.campo textarea:focus{border-color:var(--blu2);box-shadow:0 0 0 4px var(--blu-soft)}
+.campo .msg{display:none;color:var(--rosso);font-weight:700;font-size:16px;margin:6px 4px 0}
+.campo.err input,.campo.err .targa{border-color:var(--rosso);box-shadow:0 0 0 4px rgba(240,68,56,.18)}
+.campo.err .msg{display:block}
+.sez-err{display:none;color:var(--rosso);font-weight:700;margin:8px 4px 0}
+.sez-err.on{display:block}
+.due{display:grid;grid-template-columns:3fr 2fr;gap:10px}
+.targa{display:flex;align-items:stretch;background:#fff;border:2px solid #fff;border-radius:12px;overflow:hidden;min-height:66px}
+.targa .eu{background:#0B3D91;color:#fff;width:42px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:7px 0 5px;font-weight:800;font-size:17px}
+.targa input{border:0!important;box-shadow:none!important;background:#fff!important;color:#0D1626!important;border-radius:0!important;flex:1;min-width:0;text-align:center;text-transform:uppercase;font-size:34px!important;font-weight:800;letter-spacing:.12em;padding:6px!important}
+.targa input::placeholder{color:#BAC3CD!important}
+details.altro{border-radius:18px;padding:0 14px;margin-bottom:12px}
+details.altro summary{list-style:none;display:flex;align-items:center;gap:8px;min-height:56px;font-weight:700;font-size:17px;cursor:pointer}
+details.altro summary svg{margin-left:auto;transition:transform .2s;color:var(--blu2)}
+details.altro summary::-webkit-details-marker{display:none}
+details.altro[open] summary svg{transform:rotate(90deg)}
+.interruttore{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:20px;cursor:pointer;margin-bottom:10px}
+.interruttore span{flex:1;font-weight:600;font-size:17px}
+.interruttore input{appearance:none;-webkit-appearance:none;width:58px;height:34px;border-radius:999px;background:rgba(155,163,174,.3);position:relative;flex:none;cursor:pointer;transition:background .2s;margin:0}
+.interruttore input::after{content:"";position:absolute;left:3px;top:3px;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.35);transition:transform .2s}
+.interruttore input:checked{background:var(--blu)}
+.interruttore input:checked::after{transform:translateX(24px)}
+.conferma{position:fixed;left:0;right:0;bottom:calc(var(--tab-h) + 18px + env(safe-area-inset-bottom));z-index:15;padding:0 16px}
+.conferma .in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-radius:24px;background:rgba(14,17,23,.85)}
+.conferma .riep{flex:1;min-width:0}
+.conferma .riep b{display:block;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conferma .riep small{display:block;font-size:14px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conferma .btn{width:auto;min-width:140px;min-height:56px}
+.errore-box{padding:14px 16px;border-radius:20px;background:rgba(240,68,56,.12);border:1px solid rgba(240,68,56,.4);margin-top:12px;font-weight:600}
+
+/* fatto */
+.fatto{text-align:center;padding-top:10px}
+.spunta{width:104px;height:104px;border-radius:50%;margin:10px auto 8px;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#7C9BFF,var(--blu3));box-shadow:0 0 0 10px var(--blu-soft),0 18px 50px rgba(46,91,255,.55);color:#fff}
+@media (prefers-reduced-motion:no-preference){.spunta{animation:pop .5s cubic-bezier(.2,1.4,.4,1)}}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.fatto h1{font-size:40px;margin:0;letter-spacing:-.03em}
+.riep-lista{text-align:left;padding:6px 16px;margin-top:14px}
+.riep-lista div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.riep-lista div:first-child{border-top:0}
+.riep-lista span{color:var(--ink2)}
+.riep-lista b{text-align:right}
+.ora-poi{text-align:left;margin-top:14px;padding:6px 16px 10px}
+.ora-poi h2{font-size:18px;margin:10px 0 4px}
+.ora-poi ol{list-style:none;margin:0;padding:0}
+.ora-poi li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);font-weight:600}
+.ora-poi li:first-child{border-top:0}
+.ora-poi li i{width:28px;height:28px;border-radius:50%;background:var(--blu);color:#fff;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:800;flex:none}
+
+/* barra in basso stile iPhone */
+.tab{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:0 12px calc(10px + env(safe-area-inset-bottom))}
+.tab .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;height:var(--tab-h);padding:6px;border-radius:28px;box-shadow:var(--ombra-tab);background:rgba(12,14,19,.78)}
+.tb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:22px;font-size:13px;font-weight:700;color:var(--ink2);min-width:0}
+.tb svg{width:26px;height:26px}
+.tb.att{background:var(--blu-soft);color:#fff}
+.tb.att svg{color:var(--blu2)}
+.tb.pren .bolla{width:38px;height:38px;border-radius:50%;background:linear-gradient(180deg,#3F6BFF,var(--blu3));display:grid;place-items:center;color:#fff;box-shadow:var(--glow);margin-top:-2px}
+.tb.pren .bolla svg{width:22px;height:22px;color:#fff}
+.tb.pren.att{color:#fff}
+
+/* foglio dal basso */
+.velo{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.foglio{position:fixed;left:0;right:0;bottom:0;z-index:41;padding:0 10px calc(10px + env(safe-area-inset-bottom))}
+.foglio .in{max-width:560px;margin:0 auto;padding:10px 18px 18px;border-radius:30px;background:rgba(18,21,28,.92);-webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%);border:1px solid var(--gb);box-shadow:var(--ombra-tab)}
+.maniglia{width:44px;height:5px;border-radius:3px;background:rgba(255,255,255,.2);margin:4px auto 12px}
+@media (prefers-reduced-motion:no-preference){.foglio .in{animation:su .28s cubic-bezier(.2,.9,.3,1)}.vista{animation:entra .25s ease}}
+@keyframes su{from{transform:translateY(40px);opacity:0}}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}}
+footer{color:var(--ink2);font-size:14px;text-align:center;padding:22px 10px 0}
+@media (max-width:370px){body{font-size:18px}.griglia{gap:10px}.tile{padding:14px}.ore{grid-template-columns:repeat(3,1fr)}.sez-testa h1{font-size:32px}.tb{font-size:12px}.chiama{padding:0 12px}}
+</style>
+</head>
+<body>
+<div class="sfondo" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="testa">
+  <div class="riga vetro">
+    <div class="logo" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="#ffffff"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></div>
+    <div class="marchio"><b id="nome">MC Ale Officina</b><span><i class="punto" id="punto"></i><span id="statoOggi">Ciampino</span></span></div>
+    <a class="chiama premi" id="btnChiama" href="tel:0600000000" aria-label="Chiama l'officina"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Chiama</a>
+  </div>
+</header>
+
+<main class="pagina" id="app"></main>
+
+<div class="conferma" id="barraConferma" hidden>
+  <div class="in vetro">
+    <div class="riep"><b id="riepTit">Scegli il lavoro</b><small id="riepSub">Poi giorno e ora</small></div>
+    <button class="btn prim premi" id="btnConferma" data-a="conferma">Conferma</button>
+  </div>
+</div>
+
+<nav class="tab" aria-label="Sezioni">
+  <div class="in vetro" id="tabbar"></div>
+</nav>
+
+<div class="velo" id="velo" hidden data-a="chiudiFoglio"></div>
+<div class="foglio" id="foglio" hidden role="dialog" aria-modal="true"><div class="in"><div class="maniglia"></div><div id="foglioDentro"></div></div></div>
+
+<script>
+/* ===== CONFIGURAZIONE: indirizzo della web app di Apps Script (finisce con /exec) ===== */
+const API = 'INCOLLA_QUI_URL_WEB_APP/exec';
+const DEMO = true; // mostra la riga "sito dimostrativo" in fondo
+
+/* Valori di riserva: il sito si vede anche se il backend non risponde.
+   I dati veri arrivano dal foglio (Impostazioni, Listino, Ricambi). */
+const CFG = {
+  nome: 'MC Ale Officina', telefono: '0600000000', indirizzo: 'Viale J. F. Kennedy 103, 00043 Ciampino (RM)', indicazioni: 'In una traversa di Viale Kennedy',
+  lat: 41.8076, lon: 12.5981, nota_prezzi: 'IVA inclusa', ricambi_aggiornati: '', link_recensioni: '',
+  titolare: { nome: '', piva: '', email: '' }, conservazione_anni: 5,
+  pagamenti: { attivi: false, link: '', acconto: 0 }, // il pagamento online resta spento finché il backend non lo attiva
+  orari: { lun_ven: '08:30-13:00, 14:30-18:30', sabato: '08:30-12:30', domenica: '' },
+  coeff: { piccola: 1, media: 1.15, grande: 1.35 },
+  listino: [
+    ['ALT', 'Controllo in sede', 'Guardiamo l\'auto e ti diamo il prezzo', 0, 0, false, 1, '🔍'], ['TAGL', 'Tagliando', 'Olio, filtri, controlli', 120, 190, true, 2, '🛢️'],
+    ['REV', 'Revisione', 'Revisione periodica', 79, 79, false, 1, '📋'], ['FRE', 'Freni', 'Pastiglie anteriori', 80, 150, true, 2, '🛑'],
+    ['GOM', 'Cambio gomme', 'Montaggio ed equilibratura', 40, 60, true, 1, '🛞'], ['DIA', 'Diagnosi', 'Spia accesa, controllo al computer', 40, 60, false, 1, '💻'],
+    ['BAT', 'Batteria', 'Batteria compresa', 110, 200, true, .5, '🔋'], ['CLI', 'Aria condizionata', 'Ricarica e controllo perdite', 70, 120, false, 1, '❄️'],
+    ['AMM', 'Ammortizzatori', 'Coppia anteriore', 220, 400, true, 2, '🔧'], ['DIS', 'Distribuzione', 'Kit cinghia e pompa acqua', 300, 550, true, 4, '⚙️'],
+    ['FRZ', 'Frizione', 'Kit frizione', 400, 700, true, 5, '🦶']
+  ].map(x => ({ codice: x[0], servizio: x[1], descrizione: x[2], prezzo_da: x[3], prezzo_max: x[4], per_taglia: x[5], durata_h: x[6], icona: x[7] })),
+  ricambi: [
+    ['Pastiglie freni anteriori', 'Freni', 25, 70, '🛑', 'Kit per un asse'], ['Dischi freno anteriori', 'Freni', 50, 160, '🛑', 'Coppia'],
+    ['Batteria 60 Ah', 'Elettrico', 80, 150, '🔋', ''], ['Batteria start & stop', 'Elettrico', 150, 280, '🔋', 'AGM o EFB'],
+    ['Olio motore 5 litri', 'Tagliando', 35, 75, '🛢️', ''], ['Filtro olio', 'Tagliando', 8, 20, '🛢️', ''], ['Filtro aria', 'Tagliando', 10, 30, '🌬️', ''],
+    ['Filtro abitacolo', 'Tagliando', 10, 30, '🌬️', ''], ['Candele', 'Motore', 20, 70, '⚡', 'Set da 4'], ['Kit distribuzione e pompa acqua', 'Motore', 120, 320, '⚙️', ''],
+    ['Cinghia servizi', 'Motore', 15, 45, '⚙️', ''], ['Kit frizione', 'Motore', 150, 450, '🦶', ''], ['Ammortizzatore anteriore', 'Sospensioni', 40, 130, '🔧', 'Al pezzo'],
+    ['Gomma estiva 15"', 'Gomme', 50, 110, '🛞', 'Al pezzo'], ['Gomma invernale 16"', 'Gomme', 65, 140, '🛞', 'Al pezzo'],
+    ['Spazzole tergicristallo', 'Visibilità', 15, 45, '🌧️', 'Coppia'], ['Lampadina H7', 'Visibilità', 5, 20, '💡', ''],
+    ['Liquido raffreddamento 1 l', 'Liquidi', 6, 15, '💧', ''], ['Liquido freni 1 l', 'Liquidi', 8, 18, '💧', '']
+  ].map(x => ({ nome: x[0], cat: x[1], min: x[2], max: x[3], icona: x[4], nota: x[5] })),
+  giorni: [], online: false
+};
+
+/* ---------------- icone ---------------- */
+const P = {
+  home: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+  euro: '<path d="M17 6.5A7 7 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/>',
+  diag: '<path d="M3 12h4l3-8 4 16 3-8h4"/>',
+  ric: '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>',
+  cal: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  chev: '<path d="M9 6l6 6-6 6"/>', check: '<path d="M5 12l5 5 9-10"/>', clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  cerca: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>', alert: '<path d="M12 3l10 18H2z"/><path d="M12 10v4.5M12 17.5h.01"/>',
+  dito: '<path d="M9 11V5a2 2 0 0 1 4 0v5"/><path d="M13 10a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0v3a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-2.7L4.5 15a2 2 0 0 1 3.2-2.3L9 14"/>',
+  mod: '<path d="M4 20h4L18.5 9.5a2.8 2.8 0 0 0-4-4L4 16z"/>',
+  tel: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+  scudo: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  spia: '<circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5h.01"/>',
+  frenata: '<circle cx="10.5" cy="12" r="7"/><circle cx="10.5" cy="12" r="2"/><path d="M19.5 7.5c1.4 2 1.4 7 0 9M22 5.5c2 3 2 10 0 13"/>',
+  fumo: '<path d="M5 18h10a4 4 0 0 0 0-8 5 5 0 0 0-9.6 1.4A3.3 3.3 0 0 0 5 18z"/>', chiave: '<circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M21 12v2"/>',
+  vibra: '<path d="M2 12h2l2-5 3 10 3-10 3 10 3-10 2 5h2"/>', goccia: '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
+  neve: '<path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 4l3 2 3-2M9 20l3-2 3 2"/>',
+  volante: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M3.5 10.5h6.5M14 10.5h6.5M12 14v7"/>',
+  fiamma: '<path d="M12 22c4 0 7-3 7-7 0-5-5-7-5-12-3 2-4 5-4 7-1-1-2-2-2-4-2 2-3 5-3 9 0 4 3 7 7 7z"/>',
+  pedale: '<rect x="7" y="3" width="10" height="13" rx="3"/><path d="M9 7h6M9 10h6M5 21h14"/>'
+};
+const SPIE = {
+  olio: '<path d="M3 15h12l6-5"/><path d="M5 15v-3h8v3M9 12V9.5M7 9.5h4"/><path d="M20 13.5c0 1 .7 1.6.7 1.6s.7-.6.7-1.6c0-.8-.7-1.6-.7-1.6s-.7.8-.7 1.6z"/>',
+  temp: '<path d="M10 13V5a2 2 0 1 1 4 0v8a4 4 0 1 1-4 0z"/><path d="M14 8h3M14 11h3M2 21c2-1.2 4 1.2 6 0M16 21c2-1.2 4 1.2 6 0"/>',
+  batt: '<rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5M17 7V5M6.5 13h3.5M15.5 11.3v3.4M13.8 13h3.4"/>',
+  motore: '<path d="M3 10h3l2-2h6l2 2h2v2h2v-2h1v6h-1v-2h-2v3h-3l-2 2H8l-2-2H3z"/>',
+  freni: '<circle cx="12" cy="12" r="6"/><path d="M12 9v3.6M12 15.2h.01M4 7a10 10 0 0 0 0 10M20 7a10 10 0 0 1 0 10"/>',
+  airbag: '<circle cx="8" cy="5" r="2"/><path d="M8 8v6l4 3v4M6 21l2-7"/><circle cx="17" cy="11" r="3.5"/>',
+  gomme: '<path d="M6 18a8 8 0 1 1 12 0"/><path d="M5 20.5h14M12 8.5v5M12 16h.01"/>',
+  abs: '<circle cx="12" cy="12" r="8"/><text x="12" y="15.3" text-anchor="middle" font-size="7.5" font-weight="800" fill="currentColor" stroke="none" font-family="Arial">ABS</text>'
+};
+function ico(p, s, w) { return '<svg width="' + (s || 24) + '" height="' + (s || 24) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (w || 2.2) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>'; }
+
+/* ---------------- diagnosi: sintomo → cosa fare (indicazioni generali) ---------------- */
+const SINTOMI = [
+  { k: 'spia', t: 'Spia accesa', i: 'spia', c: '#E11D48', sub: 'spie' },
+  { k: 'rumore_freni', t: 'Rumore in frenata', i: 'frenata', c: '#F97316' },
+  { k: 'fumo', t: 'Fumo dallo scarico', i: 'fumo', c: '#64748B', sub: 'fumo' },
+  { k: 'non_parte', t: 'Non parte', i: 'chiave', c: '#7C3AED' },
+  { k: 'vibra', t: 'Vibra', i: 'vibra', c: '#0EA5E9' },
+  { k: 'liquido', t: 'Perde liquido', i: 'goccia', c: '#0891B2', sub: 'liquido' },
+  { k: 'clima', t: 'Clima non raffredda', i: 'neve', c: '#38BDF8' },
+  { k: 'tira', t: 'Tira da un lato', i: 'volante', c: '#16A34A' },
+  { k: 'bruciato', t: 'Odore di bruciato', i: 'fiamma', c: '#DC2626' },
+  { k: 'pedale', t: 'Pedale freno morbido', i: 'pedale', c: '#B91C1C' }
+];
+const SOTTO = {
+  spie: { t: 'Quale spia?', o: [['olio', 'Olio', 'olio', '#EF4444'], ['temp', 'Temperatura', 'temp', '#EF4444'], ['freni_spia', 'Freni', 'freni', '#EF4444'], ['batteria_spia', 'Batteria', 'batt', '#EF4444'],
+    ['motore_fissa', 'Motore, fissa', 'motore', '#F59E0B'], ['motore_lamp', 'Motore, lampeggia', 'motore', '#F59E0B'], ['airbag', 'Airbag', 'airbag', '#EF4444'], ['gomme_spia', 'Gomme', 'gomme', '#F59E0B'], ['abs', 'ABS', 'abs', '#F59E0B']] },
+  fumo: { t: 'Che colore?', o: [['fumo_bianco', 'Bianco', '#F1F5F9'], ['fumo_nero', 'Nero', '#111827'], ['fumo_blu', 'Azzurro', '#93C5FD']] },
+  liquido: { t: 'Che colore?', o: [['liquido_verde', 'Verde, rosa o blu', '#34D399'], ['liquido_nero', 'Marrone o nero', '#5B3A1E'], ['liquido_rosso', 'Rosso', '#DC2626'],
+    ['liquido_freni', 'Giallino, vicino alle ruote', '#FDE68A'], ['liquido_acqua', 'Acqua, sotto il clima', '#E0F2FE']] }
+};
+const ESITI = {
+  olio: ['r', 'Fermati subito', 'Pressione olio bassa', ['Accosta appena puoi', 'Spegni il motore', 'Non ripartire: chiamaci'], ['Olio basso', 'Pompa olio', 'Sensore'], 'DIA'],
+  temp: ['r', 'Fermati', 'Motore troppo caldo', ['Accosta e spegni', 'Non aprire il tappo del radiatore a motore caldo', 'Chiamaci'], ['Liquido basso', 'Perdita', 'Ventola', 'Termostato'], 'DIA'],
+  freni_spia: ['r', 'Non guidare', 'Problema ai freni', ['Controlla il freno a mano', 'Se resta accesa, fermati', 'Chiamaci'], ['Liquido freni basso', 'Pastiglie finite', 'Perdita'], 'FRE'],
+  batteria_spia: ['a', 'Vieni oggi', 'La batteria non si ricarica', ['Spegni clima, radio e luci inutili', 'Vieni senza spegnere il motore', 'Se si spegne, chiamaci'], ['Alternatore', 'Cinghia servizi', 'Batteria'], 'BAT'],
+  motore_fissa: ['a', 'Prenota presto', 'Il motore segnala un guasto', ['Guida con calma', 'Prenota la diagnosi'], ['Sensori', 'Candele', 'Scarico', 'Tappo carburante'], 'DIA'],
+  motore_lamp: ['r', 'Rallenta e fermati', 'Guasto serio al motore', ['Rallenta subito', 'Evita di guidare', 'Chiamaci'], ['Accensione', 'Iniettori', 'Rischio catalizzatore'], 'DIA'],
+  airbag: ['a', 'Prenota presto', 'Gli airbag potrebbero non aprirsi', ['Guida con prudenza', 'Prenota un controllo'], ['Sensore', 'Connettore sedile', 'Centralina'], 'DIA'],
+  gomme_spia: ['a', 'Controlla le gomme', 'Pressione bassa', ['Guarda le gomme', 'Gonfia alla pressione giusta', 'Se torna, è una foratura'], ['Pressione bassa', 'Foratura', 'Sensore'], 'GOM'],
+  abs: ['a', 'Guida con prudenza', 'Freni senza ABS', ['I freni funzionano, ma senza ABS', 'Tieni più distanza', 'Prenota un controllo'], ['Sensore ruota', 'Centralina ABS'], 'FRE'],
+  rumore_freni: ['a', 'Prenota presto', 'Freni da controllare', ['Fischio: pastiglie da guardare', 'Rumore di metallo: guida il meno possibile'], ['Pastiglie consumate', 'Dischi rovinati'], 'FRE'],
+  fumo_bianco: ['a', 'Guarda la temperatura', 'Fumo bianco', ['Poco e solo a freddo: è normale', 'Tanto e denso: controlla la temperatura', 'Se sale, fermati'], ['Liquido di raffreddamento', 'Guarnizione testata'], 'DIA'],
+  fumo_nero: ['a', 'Prenota presto', 'Fumo nero', ['Evita accelerate forti', 'Prenota la diagnosi'], ['Filtro aria', 'Iniettori', 'Turbina', 'Filtro antiparticolato'], 'DIA'],
+  fumo_blu: ['a', 'Controlla l\'olio', 'Fumo azzurro', ['Controlla il livello dell\'olio', 'Prenota un controllo'], ['Brucia olio', 'Turbina', 'Fasce elastiche'], 'DIA'],
+  non_parte: ['a', 'Prova così', 'L\'auto non si avvia', ['Accendi le luci: se sono deboli è la batteria', 'Senti solo un clic: batteria o motorino', 'Serve aiuto? Chiamaci'], ['Batteria', 'Motorino di avviamento', 'Carburante'], 'BAT'],
+  vibra: ['v', 'Prenota con calma', 'Vibrazioni', ['Vibra in velocità: equilibratura', 'Vibra in frenata: dischi'], ['Equilibratura', 'Gomme', 'Dischi freno'], 'GOM'],
+  liquido_verde: ['a', 'Controlla il liquido', 'Liquido di raffreddamento', ['Guarda il livello del radiatore', 'Tieni d\'occhio la temperatura'], ['Radiatore', 'Tubi', 'Pompa acqua'], 'DIA'],
+  liquido_nero: ['a', 'Controlla l\'olio', 'Perdita d\'olio', ['Controlla il livello dell\'olio', 'Prenota presto'], ['Guarnizione', 'Coppa olio', 'Paraolio'], 'DIA'],
+  liquido_rosso: ['a', 'Prenota presto', 'Olio cambio o servosterzo', ['Non rabboccare a caso', 'Prenota un controllo'], ['Cambio automatico', 'Servosterzo'], 'DIA'],
+  liquido_freni: ['r', 'Non guidare', 'Possibile liquido freni', ['Non usare l\'auto', 'Chiamaci'], ['Perdita impianto freni'], 'FRE'],
+  liquido_acqua: ['v', 'È normale', 'Condensa del clima', ['Acqua pulita sotto il motore col clima acceso: va bene', 'Se è oleosa o ha odore, prenota'], ['Condensa del clima'], 'ALT'],
+  clima: ['v', 'Prenota con calma', 'Clima da ricaricare', ['Prenota ricarica e controllo perdite'], ['Gas basso', 'Perdita', 'Compressore'], 'CLI'],
+  tira: ['a', 'Prenota presto', 'L\'auto tira da un lato', ['Controlla la pressione delle gomme', 'Prenota la convergenza'], ['Pressione gomme', 'Convergenza', 'Freni'], 'GOM'],
+  bruciato: ['r', 'Se c\'è fumo, fermati', 'Odore di bruciato', ['Fumo dal cofano: fermati, spegni, allontanati', 'Senza fumo: prenota presto'], ['Frizione', 'Freni surriscaldati', 'Olio sul motore'], 'DIA'],
+  pedale: ['r', 'Non guidare', 'Freni poco efficaci', ['Pedale morbido o lungo: è pericoloso', 'Non usare l\'auto', 'Chiamaci'], ['Aria nell\'impianto', 'Perdita liquido', 'Pompa freni'], 'FRE']
+};
+const LIV = { r: 'Pericolo', a: 'Attenzione', v: 'Tranquillo' };
+
+/* ---------------- stato ---------------- */
+const $ = id => document.getElementById(id);
+const GG = ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'];
+const MM = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'];
+const S = {
+  vista: 'home',
+  pz: { srv: null, taglia: null },
+  dg: { sint: null, esito: null },
+  rc: { q: '', cat: 'Tutti' },
+  pr: { srv: null, data: null, ora: null, nota: '', richiestaId: null, invio: false, errori: {} },
+  esito: null, bozza: {}, mappaOk: false
+};
+function ls(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+/* I dati restano in memoria solo per questa visita; sul telefono solo se il cliente attiva "Ricorda i miei dati". */
+function datiCliente() { return Object.assign({}, ls('mc_cliente') || {}, S.bozza); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function euro(n) { return Math.round(Number(n) || 0).toLocaleString('it-IT') + ' €'; }
+function arrot(n) { return n < 100 ? Math.round(n / 5) * 5 : Math.round(n / 10) * 10; }
+function normTarga(v) { return String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+function vibra() { try { navigator.vibrate && navigator.vibrate(8); } catch (e) { } }
+function srvDi(c) { return CFG.listino.find(s => s.codice === c) || null; }
+function giorno(ds) {
+  const d = new Date(ds + 'T12:00:00'); const o = new Date(); o.setHours(12, 0, 0, 0); const diff = Math.round((d - o) / 864e5);
+  return { top: diff === 0 ? 'Oggi' : diff === 1 ? 'Domani' : GG[d.getDay()], num: d.getDate(), mese: MM[d.getMonth()], lungo: (diff === 0 ? 'oggi' : diff === 1 ? 'domani' : GG[d.getDay()]) + ' ' + d.getDate() + ' ' + MM[d.getMonth()] };
+}
+function fasce(s) { return String(s || '').split(/[,;]/).map(x => x.trim()).filter(Boolean).map(x => { const m = x.match(/(\d{1,2})[:.](\d{2})\s*[-–]\s*(\d{1,2})[:.](\d{2})/); return m ? [+m[1] * 60 + +m[2], +m[3] * 60 + +m[4]] : null; }).filter(Boolean); }
+function dataBreve(ds) { const d = new Date(String(ds).slice(0, 10) + 'T12:00:00'); return isNaN(d) ? ds : d.getDate() + ' ' + MM[d.getMonth()] + ' ' + d.getFullYear(); }
+function hm(m) { return Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0'); }
+function hm2(m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+function fasceGiorno(d) { const w = d.getDay(); return fasce(w === 0 ? CFG.orari.domenica : w === 6 ? CFG.orari.sabato : CFG.orari.lun_ven); }
+function statoOra() {
+  const n = new Date(), m = n.getHours() * 60 + n.getMinutes(), f = fasceGiorno(n);
+  const cur = f.find(x => m >= x[0] && m < x[1]), next = f.find(x => m < x[0]);
+  return cur ? { on: true, t: 'Aperto, chiude alle ' + hm(cur[1]) } : next ? { on: false, t: (f.indexOf(next) ? 'Pausa pranzo, riapre alle ' : 'Apre alle ') + hm(next[0]) } : { on: false, t: 'Chiuso ora' };
+}
+function direzioni() {
+  const q = encodeURIComponent(CFG.indirizzo);
+  return /iPhone|iPad|iPod/.test(navigator.userAgent) ? 'https://maps.apple.com/?daddr=' + q : 'https://www.google.com/maps/dir/?api=1&destination=' + q;
+}
+
+/* ---------------- comunicazione col backend (fetch, poi JSONP per Safari) ---------------- */
+const API_OK = API.indexOf('INCOLLA') < 0;
+function jsonp(params) {
+  return new Promise((res, rej) => {
+    const cb = 'mc' + Date.now() + Math.floor(Math.random() * 1e5), s = document.createElement('script');
+    const fine = () => { clearTimeout(t); delete window[cb]; s.remove(); };
+    const t = setTimeout(() => { fine(); rej(new Error('tempo scaduto')); }, 20000);
+    window[cb] = d => { fine(); res(d); };
+    s.onerror = () => { fine(); rej(new Error('rete')); };
+    s.src = API + '?' + new URLSearchParams(Object.assign({}, params, { callback: cb })).toString();
+    document.head.appendChild(s);
+  });
+}
+async function chiama(action, dati, post) {
+  if (!API_OK) throw new Error('Backend non collegato');
+  dati = dati || {};
+  try {
+    const r = post ? await fetch(API, { method: 'POST', body: JSON.stringify(Object.assign({ action }, dati)) })
+      : await fetch(API + '?' + new URLSearchParams(Object.assign({ action }, dati)).toString());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return await r.json();
+  } catch (e) { return post ? jsonp({ action, payload: JSON.stringify(dati) }) : jsonp(Object.assign({ action }, dati)); }
+}
+function giorniLocali() { // anteprima degli orari se il backend non risponde
+  const out = [], now = new Date(), lim = new Date(now.getTime() + 2 * 3600e3);
+  for (let i = 0; out.length < 10 && i < 20; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i, 12); const sl = [];
+    fasceGiorno(d).forEach(x => { for (let m = x[0]; m <= x[1] - 30; m += 30) { const q = new Date(d.getFullYear(), d.getMonth(), d.getDate(), Math.floor(m / 60), m % 60); if (q >= lim) sl.push(hm2(m)); } });
+    if (sl.length) out.push({ data: d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'), rem: 99, slots: sl });
+  }
+  return out;
+}
+
+/* ---------------- navigazione ---------------- */
+const TABS = [['home', 'Home', 'home'], ['prezzi', 'Prezzi', 'euro'], ['diagnosi', 'Diagnosi', 'diag'], ['ricambi', 'Ricambi', 'ric'], ['prenota', 'Prenota', 'cal']];
+function disegnaTab() {
+  const v = S.vista === 'fatto' ? 'prenota' : S.vista;
+  $('tabbar').innerHTML = TABS.map(t => t[0] === 'prenota'
+    ? '<button class="tb pren premi' + (v === t[0] ? ' att' : '') + '" data-a="vai" data-v="prenota"' + (v === t[0] ? ' aria-current="page"' : '') + '><span class="bolla">' + ico(P[t[2]], 22, 2.4) + '</span>' + t[1] + '</button>'
+    : '<button class="tb premi' + (v === t[0] ? ' att' : '') + '" data-a="vai" data-v="' + t[0] + '"' + (v === t[0] ? ' aria-current="page"' : '') + '>' + ico(P[t[2]], 26, v === t[0] ? 2.6 : 2) + t[1] + '</button>').join('');
+}
+function vai(v, sostituisci) {
+  if (['home', 'prezzi', 'diagnosi', 'ricambi', 'prenota', 'fatto', 'privacy'].indexOf(v) < 0) v = 'home';
+  if (v === 'fatto' && !S.esito) v = 'home';
+  S.vista = v; const h = '#' + v;
+  if (sostituisci) history.replaceState(null, '', h); else if (location.hash !== h) history.pushState(null, '', h);
+  disegna(); window.scrollTo({ top: 0 });
+}
+window.addEventListener('popstate', () => { S.vista = (location.hash || '#home').slice(1); if (S.vista === 'fatto' && !S.esito) S.vista = 'home'; disegna(); });
+function disegna() {
+  disegnaTab(); chiudiFoglio();
+  const f = { home: vHome, prezzi: vPrezzi, diagnosi: vDiagnosi, ricambi: vRicambi, prenota: vPrenota, fatto: vFatto, privacy: vPrivacy }[S.vista] || vHome;
+  $('app').innerHTML = '<div class="vista">' + f() + '</div>';
+  $('barraConferma').hidden = S.vista !== 'prenota';
+  if (S.vista === 'prenota') { aggiornaRiepilogo(); legaCampi(); }
+  if (S.vista === 'ricambi') legaCerca();
+}
+function testaSez(cls, icona, titolo, sotto) {
+  return '<div class="sez-testa"><span class="sez-ico' + (cls === 'c-pren' ? ' forte' : '') + '">' + ico(P[icona], 26, 2.4) + '</span><h1>' + titolo + '</h1></div>' + (sotto ? '<p class="sez-sotto">' + sotto + '</p>' : '');
+}
+function passi(nomi, attuale) {
+  return '<div class="passi vetro" role="list" aria-label="Passi">' + nomi.map((n, i) => {
+    const st = i < attuale ? 'fatto' : i === attuale ? 'ora' : '';
+    return '<div class="passo ' + st + '" role="listitem"' + (i === attuale ? ' aria-current="step"' : '') + '><i>' + (i < attuale ? ico(P.check, 14, 3.5) : i + 1) + '</i>' + n + '</div>';
+  }).join('') + '</div>';
+}
+function istruzione(t) { return '<div class="istruzione">' + ico(P.dito, 24, 2) + t + '</div>'; }
+
+/* ---------------- HOME ---------------- */
+function vHome() {
+  const oggi = new Date().getDay();
+  const riga = (nome, s, attivo) => {
+    const f = fasce(s); const testo = f.length ? f.map(x => hm(x[0]) + '–' + hm(x[1])).join(' e ') : 'Chiuso';
+    const pausa = f.length > 1 ? '<small>Pausa pranzo ' + hm(f[0][1]) + '–' + hm(f[1][0]) + '</small>' : (f.length ? '<small>Solo mattina</small>' : '');
+    return '<div class="orario' + (attivo ? ' oggi' : '') + '"><b>' + nome + (attivo ? '<span class="tag">Oggi</span>' : '') + '</b><span class="dx">' + testo + pausa + '</span></div>';
+  };
+  return testaSez('c-home', 'home', 'Ciao!', 'Cosa ti serve oggi?') +
+    '<button class="cta premi" data-a="vai" data-v="prenota"><span class="ci">' + ico(P.cal, 32, 2.4) + '</span><span><b>Prenota una visita</b><span>In sede, 3 passi</span></span><span class="fr">' + ico(P.chev, 28, 3) + '</span></button>' +
+    '<div class="griglia">' +
+    tileNav('prezzi', 'c-prezzi', 'euro', 'Prezzi', 'Stima del lavoro') +
+    tileNav('diagnosi', 'c-diag', 'diag', 'Diagnosi', 'Cosa ha l\'auto?') +
+    tileNav('ricambi', 'c-ric', 'ric', 'Ricambi', 'Prezzi medi') +
+    '<button class="tile vetro premi" data-a="mappa"><span class="ic">' + ico(P.pin, 26, 2.4) + '</span><span><b>Dove siamo</b><small>Viale Kennedy 103</small></span></button>' +
+    '</div>' + mappa() +
+    '<div class="blocco vetro"><h2>Orari</h2>' + riga('Lun – Ven', CFG.orari.lun_ven, oggi >= 1 && oggi <= 5) + riga('Sabato', CFG.orari.sabato, oggi === 6) + riga('Domenica', CFG.orari.domenica, oggi === 0) + '</div>' +
+    '<div class="blocco vetro"><h2>Come lavoriamo</h2><div class="promesse"><span class="promessa vetro">' + ico(P.check, 20, 3) + 'Prezzo prima di iniziare</span><span class="promessa vetro">' + ico(P.scudo, 20, 2.4) + 'Niente extra senza il tuo sì</span></div>' +
+    (CFG.link_recensioni ? '<a class="link-tasto" href="' + esc(CFG.link_recensioni) + '" target="_blank" rel="noopener">Leggi le recensioni dei clienti ' + ico(P.chev, 18, 2.6) + '</a>' : '') + '</div>' +
+    piede();
+}
+function piede() {
+  return '<footer>' + (DEMO ? 'Sito dimostrativo: officina e prezzi di esempio.<br>' : '') + esc(CFG.titolare.nome || CFG.nome) + ', ' + esc(CFG.indirizzo) +
+    (CFG.titolare.piva ? '<br>P. IVA ' + esc(CFG.titolare.piva) : '') + '<br><a href="#privacy" data-a="vai" data-v="privacy">Privacy</a></footer>';
+}
+function tileNav(v, cls, ic, t, sub) { return '<button class="tile vetro premi" data-a="vai" data-v="' + v + '"><span class="ic">' + ico(P[ic], 26, 2.4) + '</span><span><b>' + t + '</b><small>' + sub + '</small></span></button>'; }
+function mappa() {
+  const dLon = .0042, dLat = .0021;
+  const src = 'https://www.openstreetmap.org/export/embed.html?bbox=' + (CFG.lon - dLon).toFixed(5) + ',' + (CFG.lat - dLat).toFixed(5) + ',' + (CFG.lon + dLon).toFixed(5) + ',' + (CFG.lat + dLat).toFixed(5) + '&layer=mapnik';
+  const parti = CFG.indirizzo.split(',');
+  // La mappa arriva da OpenStreetMap: si carica solo se il cliente la chiede, così nessun dato parte senza un tocco.
+  const img = S.mappaOk
+    ? '<a class="mappa-img" href="' + direzioni() + '" target="_blank" rel="noopener" aria-label="Apri la mappa per arrivare"><iframe src="' + src + '" loading="lazy" tabindex="-1" aria-hidden="true" title="Mappa"></iframe><span class="pin"><span></span></span></a>'
+    : '<div class="mappa-img mappa-off"><button class="btn vetro premi" data-a="mostraMappa">' + ico(P.pin, 20, 2.4) + 'Mostra la mappa</button><small>Si carica da OpenStreetMap</small></div>';
+  return '<div class="mappa vetro" id="mappa">' + img +
+    '<div class="mappa-info"><div><b>' + esc(parti[0]) + '</b><span>' + esc(parti.slice(1).join(',').trim()) + (CFG.indicazioni ? '<br>' + esc(CFG.indicazioni) : '') + '</span></div>' +
+    '<a class="btn prim premi" href="' + direzioni() + '" target="_blank" rel="noopener">' + ico(P.pin, 20, 2.4) + 'Portami qui</a></div>' +
+    '<span class="osm">Mappa © OpenStreetMap contributors</span></div>';
+}
+
+/* ---------------- PREZZI ---------------- */
+const TAGLIE = [['piccola', 'Piccola', 'Panda, 500, Yaris', 44], ['media', 'Media', 'Golf, Clio, 208', 52], ['grande', 'Grande o SUV', 'Qashqai, Tiguan, Tipo SW', 60]];
+function sagoma(w) { return '<svg width="' + w + '" height="' + Math.round(w * .5) + '" viewBox="0 0 48 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17v-4l4-6h22l8 6h6a2 2 0 0 1 2 2v2"/><path d="M3 17h42"/><circle cx="12" cy="18" r="3" fill="var(--bg)"/><circle cx="36" cy="18" r="3" fill="var(--bg)"/></svg>'; }
+function stimaDi(s, t) { const k = s.per_taglia ? (CFG.coeff[t] || 1) : 1; const r = v => k === 1 ? v : arrot(v * k); return [r(s.prezzo_da), r(s.prezzo_max)]; }
+/* Si mostra sempre la forbice intera (minimo–massimo), mai solo il "da": il cliente vede subito quanto può costare. */
+function forbice(s) { if (!s || s.prezzo_max <= 0) return null; return s.per_taglia ? [stimaDi(s, 'piccola')[0], stimaDi(s, 'grande')[1]] : [s.prezzo_da, s.prezzo_max]; }
+function testoPrezzo(s) { const f = forbice(s); if (!f) return 'Prezzo dopo il controllo'; return f[0] === f[1] ? euro(f[0]) : Math.round(f[0]) + '–' + euro(f[1]); }
+function notaPrezzi() { return 'Stima. Il prezzo esatto te lo diciamo prima di iniziare.' + (CFG.nota_prezzi ? ' ' + CFG.nota_prezzi + '.' : ''); }
+function vPrezzi() {
+  const z = S.pz; const s = srvDi(z.srv);
+  const passo = !s ? 0 : (s.per_taglia && !z.taglia) ? 1 : 2;
+  let h = testaSez('c-prezzi', 'euro', 'Prezzi', 'Stima del lavoro in 2 tocchi') + passi(['Lavoro', 'Auto', 'Prezzo'], passo);
+  if (passo > 0) h += '<div class="scelte-fatte"><button class="chip vetro premi" data-a="pzReset" aria-label="Cambia lavoro">' + esc(s.icona) + ' ' + esc(s.servizio) + ico(P.mod, 16, 2.4) + '</button>' +
+    (z.taglia && s.per_taglia ? '<button class="chip vetro premi" data-a="pzTaglia" data-v="" aria-label="Cambia auto">Auto ' + esc(TAGLIE.find(t => t[0] === z.taglia)[1].toLowerCase()) + ico(P.mod, 16, 2.4) + '</button>' : '') + '</div>';
+  if (passo === 0) h += istruzione('Tocca il lavoro') + '<div class="griglia">' + CFG.listino.map(x => '<button class="tile vetro premi" data-a="pzSrv" data-v="' + esc(x.codice) + '"><span class="em" aria-hidden="true">' + esc(x.icona) + '</span><span><b>' + esc(x.servizio) + '</b><small>' + esc(x.descrizione) + '</small><span class="pz-t">' + testoPrezzo(x) + '</span></span></button>').join('') + '</div>';
+  if (passo === 1) h += istruzione('Che auto hai?') + '<div class="righe">' + TAGLIE.map(t => '<button class="riga-r vetro premi auto-tile" data-a="pzTaglia" data-v="' + t[0] + '"><span style="width:70px;display:grid;place-items:center;flex:none">' + sagoma(t[3]) + '</span><span><b>' + t[1] + '</b><small>' + t[2] + '</small></span><span class="pz">' + ico(P.chev, 22, 2.6) + '</span></button>').join('') + '</div>';
+  if (passo === 2) {
+    const r = stimaDi(s, z.taglia || 'piccola');
+    const cifra = r[1] <= 0 ? 'Dopo il controllo' : r[0] === r[1] ? euro(r[0]) : euro(r[0]) + ' – ' + euro(r[1]);
+    h += '<div class="risultato vetro"><div class="lab">Prezzo stimato</div><div class="cifra"' + (r[1] <= 0 ? ' style="font-size:32px"' : '') + '>' + cifra + '</div>' +
+      '<div class="note"><span class="etichetta">' + ico(P.ric, 16, 2.4) + 'Ricambi + manodopera</span><span class="etichetta">' + ico(P.clock, 16, 2.4) + 'Circa ' + String(s.durata_h).replace('.', ',') + (s.durata_h === 1 ? ' ora' : ' ore') + '</span></div>' +
+      '<p class="piccolo" style="margin:10px 0 0">' + esc(notaPrezzi()) + '</p>' +
+      '<div class="pila"><button class="btn prim premi" data-a="prenotaDa" data-v="' + esc(s.codice) + '">' + ico(P.cal, 22, 2.4) + 'Prenota questo lavoro</button><button class="btn vetro premi" data-a="pzReset">Un altro lavoro</button></div></div>';
+  }
+  return h;
+}
+
+/* ---------------- DIAGNOSI ---------------- */
+function vDiagnosi() {
+  const z = S.dg; const sint = SINTOMI.find(x => x.k === z.sint);
+  const passo = !sint ? 0 : (sint.sub && !z.esito) ? 1 : 2;
+  let h = testaSez('c-diag', 'diag', 'Diagnosi', 'Cosa succede all\'auto?') + passi(['Sintomo', 'Dettaglio', 'Cosa fare'], passo);
+  if (passo > 0) h += '<div class="scelte-fatte"><button class="chip vetro premi" data-a="dgReset" aria-label="Cambia sintomo">' + esc(sint.t) + ico(P.mod, 16, 2.4) + '</button>' +
+    (z.esito ? '<button class="chip vetro premi" data-a="dgEsito" data-v="" aria-label="Cambia dettaglio">' + esc((SOTTO[sint.sub].o.find(o => o[0] === z.esito) || [])[1]) + ico(P.mod, 16, 2.4) + '</button>' : '') + '</div>';
+  if (passo === 0) h += istruzione('Tocca cosa noti') + '<div class="griglia">' + SINTOMI.map(x => '<button class="tile vetro premi" data-a="dgSint" data-v="' + x.k + '"><span class="ic">' + ico(P[x.i], 26, 2.3) + '</span><b>' + x.t + '</b></button>').join('') + '</div>';
+  if (passo === 1) {
+    const sub = SOTTO[sint.sub];
+    h += istruzione(sub.t) + '<div class="griglia">' + sub.o.map(o => sint.sub === 'spie'
+      ? '<button class="tile vetro premi" data-a="dgEsito" data-v="' + o[0] + '"><span class="spia-ic" style="color:' + o[3] + '">' + ico(SPIE[o[2]], 30, 2) + '</span><b>' + o[1] + '</b></button>'
+      : '<button class="tile vetro premi" data-a="dgEsito" data-v="' + o[0] + '"><span class="swatch" style="background:' + o[2] + '"></span><b>' + o[1] + '</b></button>').join('') + '</div>';
+  }
+  if (passo === 2) {
+    const k = z.esito || sint.k; const e = ESITI[k]; const s = srvDi(e[5]) || srvDi('ALT') || CFG.listino[0];
+    const nota = 'Sintomo: ' + sint.t + (z.esito ? ', ' + (SOTTO[sint.sub].o.find(o => o[0] === z.esito) || [])[1] : '');
+    h += '<div class="semaforo vetro"><div class="sem-testa"><span class="luce ' + e[0] + '">' + ico(e[0] === 'v' ? P.check : P.alert, 30, 2.6) + '</span><div><span>' + LIV[e[0]] + '</span><b>' + esc(e[1]) + '</b><span>' + esc(e[2]) + '</span></div></div>' +
+      '<div class="titoletto">Subito</div><ul class="azioni-sub">' + e[3].map((a, i) => '<li><i>' + (i + 1) + '</i>' + esc(a) + '</li>').join('') + '</ul>' +
+      '<div class="titoletto">Possibili cause</div><div class="cause">' + e[4].map(c => '<span>' + esc(c) + '</span>').join('') + '</div>' +
+      '<div class="pila">' + (e[0] === 'r' ? '<a class="btn rosso premi" href="tel:' + esc(CFG.telefono) + '">' + ico(P.tel, 22, 2.4) + 'Chiamaci ora</a>' : '') +
+      '<button class="btn prim premi" data-a="prenotaDa" data-v="' + esc(s.codice) + '" data-n="' + esc(nota) + '">' + ico(P.cal, 22, 2.4) + '<span class="due-righe">Prenota: ' + esc(s.servizio.toLowerCase()) + (forbice(s) ? '<small>' + testoPrezzo(s) + '</small>' : '') + '</span></button>' +
+      '<button class="btn vetro premi" data-a="dgReset">Un altro sintomo</button></div>' +
+      '<p class="piccolo" style="margin:12px 2px 0">Indicazioni generali: non sostituiscono il controllo in officina.</p></div>';
+  }
+  return h;
+}
+
+/* ---------------- RICAMBI ---------------- */
+const CAT_SRV = { Freni: 'FRE', Tagliando: 'TAGL', Elettrico: 'BAT', Gomme: 'GOM', Sospensioni: 'AMM' };
+function vRicambi() {
+  const cats = ['Tutti'].concat(CFG.ricambi.map(r => r.cat).filter((c, i, a) => c && a.indexOf(c) === i));
+  return testaSez('c-ric', 'ric', 'Ricambi', 'Prezzi medi del solo pezzo') +
+    '<div class="avviso-r" role="note">' + ico(P.alert, 24, 2.4) + '<div><b>Prezzi medi indicativi</b>Possono non essere affidabili: cambiano con marca e modello. Montaggio escluso.' + (CFG.ricambi_aggiornati ? '<br>Controllati il ' + esc(dataBreve(CFG.ricambi_aggiornati)) + '.' : '') + '</div></div>' +
+    '<label class="cerca vetro">' + ico(P.cerca, 22, 2.4) + '<input id="cercaR" type="search" placeholder="Cerca: pastiglie, batteria…" value="' + esc(S.rc.q) + '" autocomplete="off" aria-label="Cerca un ricambio"></label>' +
+    '<div class="filtri" role="group" aria-label="Categorie">' + cats.map(c => '<button class="filtro vetro premi" data-a="rcCat" data-v="' + esc(c) + '" aria-pressed="' + (S.rc.cat === c) + '">' + esc(c) + '</button>').join('') + '</div>' +
+    '<div class="righe" id="righeR">' + righeRicambi() + '</div>';
+}
+function righeRicambi() {
+  const q = S.rc.q.toLowerCase().trim();
+  const l = CFG.ricambi.filter(r => (S.rc.cat === 'Tutti' || r.cat === S.rc.cat) && (!q || (r.nome + ' ' + r.cat).toLowerCase().indexOf(q) >= 0));
+  if (!l.length) return '<div class="blocco vetro" style="text-align:center;margin-top:0">Nessun risultato.<br><button class="link-tasto" data-a="prenotaDa" data-v="ALT" data-n="Ricambio: ' + esc(S.rc.q) + '">Chiedi un preventivo ' + ico(P.chev, 18, 2.6) + '</button></div>';
+  return l.map(r => '<button class="riga-r vetro premi" data-a="rcApri" data-v="' + esc(r.nome) + '"><span class="em" aria-hidden="true">' + esc(r.icona || '🔧') + '</span><span><b>' + esc(r.nome) + '</b><small>' + esc(r.nota || r.cat) + '</small></span><span class="pz">' + Math.round(r.min) + '–' + euro(r.max) + '</span></button>').join('');
+}
+function legaCerca() { const i = $('cercaR'); if (i) i.addEventListener('input', () => { S.rc.q = i.value; $('righeR').innerHTML = righeRicambi(); }); }
+
+/* ---------------- PRENOTA ---------------- */
+function passoPren() { const z = S.pr; return !z.srv ? 0 : (!z.data || !z.ora) ? 1 : 2; }
+function giorniValidi() { const s = srvDi(S.pr.srv); const d = s ? s.durata_h : 0; return CFG.giorni.filter(g => g.rem >= d && g.slots.length); }
+function primoLibero() { const gv = giorniValidi(); const g = gv.find(x => x.data === S.pr.data) || gv[0]; if (!g) { S.pr.data = S.pr.ora = null; return; } S.pr.data = g.data; if (g.slots.indexOf(S.pr.ora) < 0) S.pr.ora = g.slots[0]; }
+function vPrenota() {
+  const z = S.pr, m = datiCliente(), e = z.errori || {};
+  const passo = passoPren();
+  const base = ['ALT', 'TAGL', 'REV', 'FRE', 'GOM', 'DIA'];
+  const visibili = CFG.listino.filter(s => base.indexOf(s.codice) >= 0 || s.codice === z.srv);
+  const altri = CFG.listino.filter(s => visibili.indexOf(s) < 0);
+  const rigaSrv = s => '<button class="srv vetro premi" data-a="prSrv" data-v="' + esc(s.codice) + '" aria-pressed="' + (z.srv === s.codice) + '"><span class="em" aria-hidden="true">' + esc(s.icona) + '</span><span><b>' + esc(s.servizio) + '</b><small>' + esc(s.descrizione) + '</small></span><span class="pz">' + (forbice(s) ? testoPrezzo(s) : '') + '</span></button>';
+  let h = testaSez('c-pren', 'cal', 'Prenota', 'Visita in sede, ' + esc(CFG.indirizzo.split(',')[0]) + '. Prezzo finale prima di iniziare.') + passi(['Lavoro', 'Quando', 'Dati'], passo);
+  h += '<div id="s-lavoro">' + istruzione('1. Cosa facciamo?') + '<div class="srv-lista">' + visibili.map(rigaSrv).join('') + '</div>' +
+    (altri.length ? '<details class="altro vetro altri-srv"><summary>Altri lavori' + ico(P.chev, 20, 2.6) + '</summary><div class="srv-lista" style="padding-bottom:12px">' + altri.map(rigaSrv).join('') + '</div></details>' : '') +
+    '<div class="sez-err' + (e.servizio ? ' on' : '') + '">' + esc(e.servizio || '') + '</div></div>';
+  h += '<div id="s-quando">' + istruzione('2. Quando?');
+  if (!z.srv) h += '<div class="blocco vetro piccolo" style="margin-top:0">Prima scegli il lavoro.</div>';
+  else {
+    const gv = giorniValidi();
+    if (!gv.length) h += '<div class="blocco vetro" style="margin-top:0">Nessun posto libero nei prossimi giorni.<div class="pila"><a class="btn prim" href="tel:' + esc(CFG.telefono) + '">' + ico(P.tel, 22, 2.4) + 'Chiamaci</a></div></div>';
+    else {
+      h += '<div class="giorni" role="group" aria-label="Giorno">' + gv.map(g => { const t = giorno(g.data); return '<button class="gio vetro premi" data-a="prGiorno" data-v="' + g.data + '" aria-pressed="' + (g.data === z.data) + '"><b>' + t.top + '</b><strong>' + t.num + '</strong><span>' + t.mese + '</span></button>'; }).join('') + '</div>';
+      const g = gv.find(x => x.data === z.data);
+      if (g) {
+        const mat = g.slots.filter(o => o < '13:00'), pom = g.slots.filter(o => o >= '13:00');
+        const b = (t, l) => l.length ? '<div class="fascia">' + t + '</div><div class="ore">' + l.map(o => '<button class="ora vetro premi" data-a="prOra" data-v="' + o + '" aria-pressed="' + (o === z.ora) + '">' + o + '</button>').join('') + '</div>' : '';
+        h += b('Mattina', mat) + b('Pomeriggio', pom);
+      }
+    }
+  }
+  h += '<div class="sez-err' + (e.quando ? ' on' : '') + '">' + esc(e.quando || '') + '</div></div>';
+  h += '<div id="s-dati">' + istruzione('3. I tuoi dati') +
+    '<div class="campo' + (e.targa ? ' err' : '') + '" id="c-targa"><label for="targa">Targa</label><div class="targa"><span class="eu" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><g fill="#FFCC00"><circle cx="12" cy="3" r="1.5"/><circle cx="19.8" cy="7.5" r="1.5"/><circle cx="19.8" cy="16.5" r="1.5"/><circle cx="12" cy="21" r="1.5"/><circle cx="4.2" cy="16.5" r="1.5"/><circle cx="4.2" cy="7.5" r="1.5"/></g></svg>I</span>' +
+    '<input id="targa" autocomplete="off" autocapitalize="characters" maxlength="9" placeholder="AB123CD" value="' + esc(m.targa || '') + '"></div><div class="msg">' + esc(e.targa || '') + '</div></div>' +
+    '<div class="campo' + (e.cliente ? ' err' : '') + '" id="c-cliente"><label for="cliente">Nome</label><input id="cliente" autocomplete="name" value="' + esc(m.cliente || '') + '"><div class="msg">' + esc(e.cliente || '') + '</div></div>' +
+    '<div class="campo' + (e.telefono ? ' err' : '') + '" id="c-telefono"><label for="telefono">Telefono</label><input id="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="333 1234567" value="' + esc(m.telefono || '') + '"><div class="msg">' + esc(e.telefono || '') + '</div></div>' +
+    '<details class="altro vetro"' + (z.nota ? ' open' : '') + '><summary>Auto e note <span class="piccolo">(facoltativo)</span>' + ico(P.chev, 20, 2.6) + '</summary>' +
+    '<div class="due"><div class="campo"><label for="auto">Auto</label><input id="auto" autocomplete="off" placeholder="Fiat Panda" value="' + esc(m.auto || '') + '"></div><div class="campo"><label for="km">Km</label><input id="km" inputmode="numeric" autocomplete="off" placeholder="85000" value="' + esc(m.km || '') + '"></div></div>' +
+    '<div class="campo"><label for="note">Note</label><textarea id="note" placeholder="Es. rumore quando freno">' + esc(z.nota) + '</textarea></div></details>' +
+    '<label class="interruttore vetro"><span>Promemoria WhatsApp per revisione, tagliando e gomme</span><input type="checkbox" id="consenso"' + (m.consenso ? ' checked' : '') + '></label>' +
+    '<label class="interruttore vetro"><span>Ricorda i miei dati su questo telefono</span><input type="checkbox" id="ricorda"' + (ls('mc_cliente') ? ' checked' : '') + '></label>' +
+    '<p class="piccolo" style="margin:10px 4px 0">Dati usati solo per questa visita e, se lo scegli, per i promemoria. <a href="#privacy" data-a="vai" data-v="privacy" style="color:inherit;font-weight:700">Come usiamo i tuoi dati</a></p>' +
+    '<div id="erroreInvio"></div></div><div style="height:96px"></div>';
+  return h;
+}
+function legaCampi() {
+  const t = $('targa'); if (t) t.addEventListener('input', () => { t.value = t.value.toUpperCase().replace(/[^A-Z0-9 ]/g, ''); togli('c-targa', 'targa'); });
+  ['cliente', 'telefono'].forEach(k => { const el = $(k); if (el) el.addEventListener('input', () => togli('c-' + k, k)); });
+}
+function togli(id, k) { const el = $(id); if (el) el.classList.remove('err'); delete S.pr.errori[k]; }
+function aggiornaRiepilogo() {
+  const z = S.pr, s = srvDi(z.srv);
+  $('riepTit').textContent = s ? s.servizio + (forbice(s) ? ', ' + testoPrezzo(s) : '') : 'Scegli il lavoro';
+  $('riepSub').textContent = s ? (z.data ? giorno(z.data).lungo + ' alle ' + z.ora : 'Scegli giorno e ora') : 'Poi giorno e ora';
+}
+function leggiCampi() { const v = id => ($(id) ? $(id).value.trim() : ''); return { targa: normTarga(v('targa')), cliente: v('cliente'), telefono: v('telefono'), auto: v('auto'), km: v('km').replace(/\D/g, ''), note: v('note'), consenso: $('consenso') ? $('consenso').checked : false }; }
+function salvaBozza() {
+  if (!$('targa')) return; const d = leggiCampi();
+  S.bozza = { targa: d.targa, cliente: d.cliente, telefono: d.telefono, auto: d.auto, km: d.km, consenso: d.consenso }; S.pr.nota = d.note;
+  if ($('ricorda') && $('ricorda').checked) ls('mc_cliente', S.bozza); else ls('mc_cliente', null);
+}
+function ridisegnaFermo() { const y = window.scrollY; disegna(); window.scrollTo(0, y); }
+async function conferma() {
+  const z = S.pr; if (z.invio) return;
+  const d = leggiCampi(); const e = {};
+  if (!z.srv) e.servizio = 'Scegli il lavoro';
+  else if (!z.data || !z.ora) e.quando = 'Scegli giorno e ora';
+  if (!/^[A-Z0-9]{5,8}$/.test(d.targa)) e.targa = 'Controlla la targa (es. AB123CD)';
+  if (d.cliente.length < 2) e.cliente = 'Scrivi il tuo nome';
+  const tel = d.telefono.replace(/\D/g, ''); if (tel.length < 9 || tel.length > 13) e.telefono = 'Controlla il numero';
+  salvaBozza();
+  if (Object.keys(e).length) {
+    z.errori = e; ridisegnaFermo();
+    const primo = e.servizio ? 's-lavoro' : e.quando ? 's-quando' : e.targa ? 'c-targa' : e.cliente ? 'c-cliente' : 'c-telefono';
+    setTimeout(() => $(primo) && $(primo).scrollIntoView({ behavior: 'smooth', block: 'center' }), 50); return;
+  }
+  z.invio = true; z.richiestaId = z.richiestaId || ('r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7));
+  const b = $('btnConferma'); b.disabled = true; b.textContent = 'Invio…';
+  try {
+    const r = await chiama('prenota', { servizio: z.srv, data: z.data, ora: z.ora, targa: d.targa, cliente: d.cliente, telefono: d.telefono, auto: d.auto, km: d.km, note: d.note, consenso: d.consenso, richiestaId: z.richiestaId }, true);
+    if (r && r.ok) { S.esito = r; z.richiestaId = null; z.nota = ''; vibra(); vai('fatto', true); caricaConfig(); return; }
+    if (r && r.campi) { if (r.giorni) { CFG.giorni = r.giorni; primoLibero(); } z.errori = r.campi; ridisegnaFermo(); return; }
+    throw new Error((r && r.errore) || 'errore');
+  } catch (err) {
+    const box = $('erroreInvio');
+    if (box) { box.innerHTML = '<div class="errore-box">Prenotazione non inviata. Riprova o chiamaci: non verrà registrata due volte.<div class="pila"><a class="btn prim" href="tel:' + esc(CFG.telefono) + '">' + ico(P.tel, 22, 2.4) + 'Chiama</a></div></div>'; box.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+  } finally { z.invio = false; const bb = $('btnConferma'); if (bb) { bb.disabled = false; bb.textContent = 'Conferma'; } }
+}
+
+/* ---------------- PAGAMENTO ONLINE (predisposto, spento) ----------------
+   Si accende solo con pagamenti_attivi = SI e un link di pagamento nelle Impostazioni (es. Stripe Payment Link).
+   Il codice prenotazione viaggia come riferimento, così il pagamento si ritrova nel gestionale.
+   Il pagamento è facoltativo: la prenotazione è già confermata anche senza. */
+function bloccoPagamento(r) {
+  const pg = CFG.pagamenti || {}; if (!pg.attivi || !/^https:\/\//.test(pg.link || '')) return '';
+  const url = pg.link + (pg.link.indexOf('?') < 0 ? '?' : '&') + 'client_reference_id=' + encodeURIComponent(r.codice);
+  return '<div class="paga vetro"><h2 style="margin:0;font-size:21px">Vuoi pagare ' + (pg.acconto ? 'l\'acconto di ' + euro(pg.acconto) : 'un acconto') + ' online?</h2>' +
+    '<p>Facoltativo: la prenotazione è già confermata. L\'acconto viene scalato dal totale.</p><a class="btn vetro premi" href="' + esc(url) + '" target="_blank" rel="noopener">Paga online</a></div>';
+}
+
+/* ---------------- PRIVACY (art. 13 GDPR) ----------------
+   Testo da far controllare al titolare: non è consulenza legale. I campi vuoti si completano nelle Impostazioni. */
+const PRIVACY_AGG = '24 novembre 2026';
+function vPrivacy() {
+  const t = CFG.titolare || {}, man = x => x ? esc(x) : '<i>(da completare nelle Impostazioni)</i>';
+  return testaSez('c-home', 'scudo', 'Privacy', 'Come usiamo i tuoi dati, in parole semplici.') + '<div class="privacy blocco vetro">' +
+    '<h2>Chi tratta i tuoi dati</h2><p>' + man(t.nome || CFG.nome) + ', ' + esc(CFG.indirizzo) + '. P. IVA ' + man(t.piva) + '. Telefono ' + esc(CFG.telefono) + ', email ' + man(t.email) + '.</p>' +
+    '<h2>Quali dati</h2><p>Quelli che scrivi quando prenoti o porti l\'auto: nome, telefono, targa, marca e modello, chilometri, note sul problema e, se chiedi il ritiro, l\'indirizzo. In officina registriamo anche i lavori fatti e gli importi.</p>' +
+    '<h2>Perché e con quale base</h2><ul>' +
+    '<li><b>Prenotazione e lavoro sulla tua auto</b>: servono per fare quello che ci chiedi (art. 6.1.b GDPR). Senza questi dati non possiamo prenotare.</li>' +
+    '<li><b>Fatture e obblighi fiscali</b>: lo chiede la legge (art. 6.1.c).</li>' +
+    '<li><b>Promemoria WhatsApp</b> per revisione, tagliando e gomme: solo se attivi l\'interruttore (consenso, art. 6.1.a). Puoi toglierlo quando vuoi rispondendo NO a un messaggio: da quel momento non ti scriviamo più.</li></ul>' +
+    '<p>Non vendiamo i tuoi dati e non li usiamo per pubblicità.</p>' +
+    '<h2>Chi li vede</h2><ul><li>Le persone che lavorano in officina.</li>' +
+    '<li>Google, che fornisce i fogli di calcolo e il server dove i dati sono salvati, per nostro conto. Google può trasferire dati fuori dall\'Unione europea con le garanzie previste dal GDPR.</li>' +
+    '<li>WhatsApp (Meta), solo per i messaggi che ci scambiamo.</li><li>GitHub, che ospita questo sito e registra gli accessi tecnici.</li></ul>' +
+    '<h2>Per quanto tempo</h2><p>Lo storico dei lavori sulla tua auto per ' + esc(CFG.conservazione_anni || 5) + ' anni dall\'ultima visita, così sappiamo cosa è stato fatto. Le fatture per 10 anni, come chiede la legge. Il consenso ai promemoria vale finché non lo togli.</p>' +
+    '<h2>Sul tuo telefono</h2><p>Il sito non usa cookie di profilazione né statistiche. Se attivi “Ricorda i miei dati”, nome, telefono e targa restano solo in questo browser: spegni l\'interruttore e li cancelli. La mappa si carica da OpenStreetMap solo se tocchi “Mostra la mappa”.</p>' +
+    '<h2>I tuoi diritti</h2><p>Puoi chiederci in ogni momento di vedere i tuoi dati, correggerli, cancellarli, limitarne l\'uso, opporti o riceverne una copia. Scrivici o chiedi in officina. Se pensi che li trattiamo male puoi rivolgerti al Garante per la protezione dei dati personali (garanteprivacy.it).</p>' +
+    '<p class="agg">Ultimo aggiornamento: ' + PRIVACY_AGG + '.</p></div>' + piede();
+}
+
+/* ---------------- FATTO ---------------- */
+function vFatto() {
+  const r = S.esito, t = giorno(r.data);
+  return '<div class="fatto"><div class="spunta">' + ico(P.check, 58, 3) + '</div><h1>Prenotato</h1><p class="piccolo" style="font-size:18px;margin:6px 0 0">Ti aspettiamo ' + t.lungo + ' alle ' + esc(r.ora) + '</p>' +
+    '<div class="riep-lista vetro"><div><span>Lavoro</span><b>' + esc(r.servizio) + '</b></div><div><span>Quando</span><b>' + t.lungo + ', ' + esc(r.ora) + '</b></div><div><span>Targa</span><b>' + esc(r.targa) + '</b></div>' +
+    '<div><span>Prezzo stimato</span><b>' + testoPrezzo(CFG.listino.find(x => x.servizio === r.servizio)) + '</b></div><div><span>N. prenotazione</span><b>' + esc(r.codice) + '</b></div></div>' +
+    '<div class="ora-poi vetro"><h2>Cosa succede ora</h2><ol><li><i>1</i>Porti l\'auto ' + t.lungo + ' alle ' + esc(r.ora) + '</li><li><i>2</i>Prima di iniziare ti diciamo il prezzo esatto</li><li><i>3</i>Se troviamo altro, ti chiediamo il permesso</li></ol></div>' +
+    bloccoPagamento(r) +
+    '<div class="pila"><button class="btn prim premi" data-a="calendario">' + ico(P.cal, 22, 2.4) + 'Salva nel calendario</button><a class="btn vetro premi" href="' + direzioni() + '" target="_blank" rel="noopener">' + ico(P.pin, 22, 2.4) + 'Portami qui</a>' +
+    '<button class="btn vetro premi" data-a="vai" data-v="home">Torna alla Home</button></div></div>';
+}
+function calendario() {
+  const r = S.esito; const [y, mo, d] = r.data.split('-'), [hh, mi] = r.ora.split(':');
+  const f = x => x.getFullYear() + String(x.getMonth() + 1).padStart(2, '0') + String(x.getDate()).padStart(2, '0') + 'T' + String(x.getHours()).padStart(2, '0') + String(x.getMinutes()).padStart(2, '0') + '00';
+  const ini = new Date(+y, +mo - 1, +d, +hh, +mi), fine = new Date(ini.getTime() + 3600e3);
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//MC Ale//IT', 'BEGIN:VEVENT', 'UID:' + r.codice + '@mcale', 'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z',
+    'DTSTART;TZID=Europe/Rome:' + f(ini), 'DTEND;TZID=Europe/Rome:' + f(fine), 'SUMMARY:Officina: ' + r.servizio, 'LOCATION:' + CFG.indirizzo.replace(/,/g, '\\,'),
+    'DESCRIPTION:Targa ' + r.targa + ' - N. ' + r.codice, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'officina-' + r.data + '.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ---------------- foglio dal basso ---------------- */
+function apriFoglio(html) { $('foglioDentro').innerHTML = html; $('velo').hidden = false; $('foglio').hidden = false; }
+function chiudiFoglio() { $('velo').hidden = true; $('foglio').hidden = true; }
+
+/* ---------------- azioni ---------------- */
+const AZ = {
+  vai: d => { if (S.vista === 'prenota') salvaBozza(); vibra(); vai(d.v); },
+  mappa: () => { const m = $('mappa'); if (m) m.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
+  mostraMappa: () => { S.mappaOk = true; const y = window.scrollY; disegna(); window.scrollTo(0, y); },
+  pzSrv: d => { S.pz.srv = d.v; S.pz.taglia = null; vibra(); disegna(); window.scrollTo({ top: 0 }); },
+  pzTaglia: d => { S.pz.taglia = d.v || null; vibra(); disegna(); window.scrollTo({ top: 0 }); },
+  pzReset: () => { S.pz = { srv: null, taglia: null }; disegna(); window.scrollTo({ top: 0 }); },
+  dgSint: d => { S.dg = { sint: d.v, esito: null }; vibra(); disegna(); window.scrollTo({ top: 0 }); },
+  dgEsito: d => { S.dg.esito = d.v || null; vibra(); disegna(); window.scrollTo({ top: 0 }); },
+  dgReset: () => { S.dg = { sint: null, esito: null }; disegna(); window.scrollTo({ top: 0 }); },
+  rcCat: d => { S.rc.cat = d.v; disegna(); },
+  rcApri: d => {
+    const r = CFG.ricambi.find(x => x.nome === d.v); if (!r) return; const srv = srvDi(CAT_SRV[r.cat]) ? CAT_SRV[r.cat] : 'ALT';
+    apriFoglio('<div style="display:flex;align-items:center;gap:12px"><span style="font-size:34px">' + esc(r.icona || '🔧') + '</span><div><b style="font-size:24px;display:block;line-height:1.1">' + esc(r.nome) + '</b><span class="piccolo">' + esc(r.nota || r.cat) + '</span></div></div>' +
+      '<div class="risultato vetro" style="margin-top:14px"><div class="lab">Prezzo medio del pezzo</div><div class="cifra">' + euro(r.min) + ' – ' + euro(r.max) + '</div><span class="etichetta">Montaggio escluso</span></div>' +
+      '<p class="piccolo">Indicativo: può non essere affidabile. Il prezzo vero dipende da marca e modello.</p>' +
+      '<div class="pila"><button class="btn prim premi" data-a="prenotaDa" data-v="' + srv + '" data-n="Ricambio: ' + esc(r.nome) + '">' + ico(P.cal, 22, 2.4) + 'Prenota il montaggio</button><button class="btn vetro premi" data-a="chiudiFoglio">Chiudi</button></div>');
+  },
+  chiudiFoglio: () => chiudiFoglio(),
+  prenotaDa: d => {
+    S.pr.srv = d.v; if (d.n) S.pr.nota = d.n; S.pr.errori = {}; primoLibero(); vibra(); vai('prenota');
+    setTimeout(() => { const el = $(S.pr.data ? 's-dati' : 's-quando'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+  },
+  prSrv: d => { salvaBozza(); S.pr.srv = d.v; delete S.pr.errori.servizio; primoLibero(); vibra(); ridisegnaFermo(); setTimeout(() => { const q = $('s-quando'); if (q) q.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); },
+  prGiorno: d => { salvaBozza(); S.pr.data = d.v; const g = CFG.giorni.find(x => x.data === d.v); if (g && g.slots.indexOf(S.pr.ora) < 0) S.pr.ora = g.slots[0]; delete S.pr.errori.quando; vibra(); ridisegnaFermo(); },
+  prOra: d => { salvaBozza(); S.pr.ora = d.v; delete S.pr.errori.quando; vibra(); ridisegnaFermo(); },
+  conferma: () => conferma(),
+  calendario: () => calendario()
+};
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-a]'); if (!b) return;
+  const f = AZ[b.dataset.a]; if (f) { e.preventDefault(); f(b.dataset, b); }
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') chiudiFoglio(); });
+
+/* ---------------- avvio ---------------- */
+function aggiornaTesta() {
+  $('nome').textContent = CFG.nome; document.title = CFG.nome + ', Ciampino';
+  $('btnChiama').href = 'tel:' + String(CFG.telefono).replace(/\s/g, '');
+  const st = statoOra(); $('statoOggi').textContent = st.t; $('punto').classList.toggle('on', st.on);
+}
+async function caricaConfig() {
+  try {
+    const r = await chiama('config');
+    if (r && r.ok) {
+      ['nome', 'telefono', 'indirizzo', 'indicazioni', 'lat', 'lon', 'orari', 'coeff'].forEach(k => { if (r[k] !== undefined && r[k] !== '') CFG[k] = r[k]; });
+      ['nota_prezzi', 'ricambi_aggiornati', 'link_recensioni', 'titolare', 'pagamenti', 'conservazione_anni'].forEach(k => { if (r[k] !== undefined) CFG[k] = r[k]; });
+      if (r.listino && r.listino.length) CFG.listino = r.listino;
+      if (r.ricambi && r.ricambi.length) CFG.ricambi = r.ricambi;
+      CFG.giorni = r.giorni || []; CFG.online = true;
+    }
+  } catch (e) { }
+  if (!CFG.online) CFG.giorni = giorniLocali();
+  aggiornaTesta();
+  if (S.pr.srv) primoLibero();
+  if (S.vista === 'prenota') { salvaBozza(); ridisegnaFermo(); } else if (S.vista !== 'fatto') disegna();
+}
+(function avvio() {
+  CFG.giorni = giorniLocali(); aggiornaTesta();
+  const q = new URLSearchParams(location.search);
+  if (q.get('tg')) S.bozza.targa = normTarga(q.get('tg'));
+  if (q.get('s') && srvDi(q.get('s'))) { S.pr.srv = q.get('s'); primoLibero(); S.vista = 'prenota'; history.replaceState(null, '', location.pathname + '#prenota'); }
+  else S.vista = (location.hash || '#home').slice(1);
+  if (S.vista === 'fatto') S.vista = 'home';
+  disegna();
+  caricaConfig();
+  setInterval(aggiornaTesta, 60000);
+})();
+</script>
+</body>
+</html>
